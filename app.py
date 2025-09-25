@@ -1,7 +1,12 @@
 from flask import Flask, render_template
+from dotenv import load_dotenv
+import os
+from routes.api import api_bp
 
 def create_app():
     app = Flask(__name__)
+
+    app.register
 
     @app.route('/')
     def home():
