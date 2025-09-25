@@ -1,4 +1,4 @@
-import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify
 import json, requests, os
 
 api_bp = Blueprint("api", __name__)
