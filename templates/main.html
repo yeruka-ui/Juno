@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+        />
+        <title>Juno Trial</title>
+    </head>
+    <body class="h-screen w-full flex justify-center items-center">
+        <main
+            class="w-[90%] h-[90%] grid grid-rows-[1fr_100px] p-6 bg-slate-100 rounded-4xl shadow-inner"
+        >
+            <!--chat-->
+            <div class=""></div>
+            <!--input-->
+            <form class="bg-white shadow-md rounded-3xl flex p-4">
+                <input
+                    type="text"
+                    class="h-full w-full rounded-2xl text-slate-700 focus:outline-white p-1 px-4 text-start text-2xl"
+                    placeholder="Chat with Juno"
+                />
+                <section class="w-[160px] flex h-full">
+                    <button class="bg-white h-full w-[80px] rounded-full">
+                        <i
+                            class="fa-solid fa-microphone text-3xl text-slate-700"
+                        ></i>
+                    </button>
+                    <button
+                        class="bg-gradient-to-r from-green-300 shadow-md to-cyan-400 h-[70px] w-[70px] rounded-full hover:rotate-180 transition-all duration-100 active:brightness-95 active:scale-110"
+                    >
+                        <i
+                            class="fa-solid fa-arrow-down text-3xl text-white"
+                        ></i>
+                    </button>
+                </section>
+            </form>
+        </main>
+    </body>
+</html>
