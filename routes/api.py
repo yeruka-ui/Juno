@@ -1,4 +1,4 @@
-from flask from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify
 import requests, os
 
 api_bp = Blueprint("api", __name__)
