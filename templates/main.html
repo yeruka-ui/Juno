@@ -20,59 +20,33 @@
     <main
       class="w-[95%] h-[95%] sm:w-[1200px] sm:h-[90%] grid grid-rows-[1fr_100px] sm:grid-rows-[1fr_80px] p-4 sm:p-6 bg-slate-100 rounded-4xl shadow-inner"
     >
-      <!--chat-->
-      <div id="chatContainer" class="overflow-y-auto flex flex-col gap-4">
-        <!--human chat-->
-        <div
-          class="h-fit w-[85%] sm:w-[700px] bg-white rounded-2xl self-end drop-shadow font-[Inter] text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600"
-        >
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        </div>
-
-        <!--bot chat-->
-        <div
-          class="h-fit w-[85%] sm:w-[700px] bg-linear-to-r from-emerald-100 to-teal-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600"
-        >
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
-          atque delectus ducimus dolore minima, consectetur modi. Excepturi odit
-          quos est facere consequatur provident consequuntur ex amet, soluta,
-          molestias deleniti error.
-        </div>
-        <!--human chat-->
-        <div
-          class="h-fit w-[85%] sm:w-[700px] bg-white rounded-2xl self-end drop-shadow font-[Inter] text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600"
-        >
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
-          atque delectus ducimus dolore minima, consectetur modi.
-        </div>
-
-        <!--bot chat-->
-        <div
-          class="h-fit w-[85%] sm:w-[700px] bg-linear-to-r from-emerald-100 to-teal-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600"
-        >
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
-          atque delectus ducimus dolore minima, consectetur modi. Excepturi odit
-          quos est facere consequatur provident consequuntur ex amet, soluta,
-          molestias deleniti error.
-        </div>
+      <!-- chat messages -->
+      <div
+        id="chatContainer"
+        class="overflow-y-auto flex flex-col gap-4"
+      >
+        <!-- JS will insert chat bubbles here -->
       </div>
 
-      <!--input-->
+      <!-- input -->
       <form
+        id="chatForm"
         class="bg-white shadow-md rounded-3xl sm:h-full h-fit flex flex-col sm:flex-row p-3"
       >
         <input
+          id="userInput"
           type="text"
           class="h-full w-full rounded-2xl text-slate-700 focus:outline-white p-1 px-4 text-start text-xl sm:text-2xl"
           placeholder="Chat with Juno"
         />
         <section class="w-full sm:w-[160px] flex h-full justify-end gap-2">
-          <button class="bg-white h-full w-[40px] rounded-full relative">
+          <button type="button" class="bg-white h-full w-[40px] rounded-full relative">
             <i
-              class="fa-solid fa-microphone sm: text-3xl text-2xl text-slate-700 absolute sm:top-3 sm:right-4 top-1.5 right-2"
+              class="fa-solid fa-microphone sm:text-3xl text-2xl text-slate-700 absolute sm:top-3 sm:right-4 top-1.5 right-2"
             ></i>
           </button>
           <button
+            type="submit"
             class="bg-gradient-to-r from-green-300 shadow-md to-cyan-400 h-[40px] w-[40px] sm:h-[55px] sm:w-[55px] rounded-full hover:rotate-180 transition-all duration-100 active:brightness-95 active:scale-110"
           >
             <i class="fa-solid fa-arrow-down text-2xl text-white"></i>
@@ -80,5 +54,53 @@
         </section>
       </form>
     </main>
+
+    <!-- chat logic -->
+    <script>
+      const form = document.getElementById("chatForm");
+      const input = document.getElementById("userInput");
+      const chatContainer = document.getElementById("chatContainer");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // stop page reload
+
+        const message = input.value.trim();
+        if (!message) return;
+
+        // add user bubble
+        chatContainer.innerHTML += `
+          <div class="h-fit w-[85%] sm:w-[700px] bg-white rounded-2xl self-end drop-shadow font-[Inter] text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600">
+            ${message}
+          </div>`;
+
+        // send to Flask API
+        const res = await fetch("/api/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message }),
+        });
+
+        const data = await res.json();
+
+        // add bot bubble
+        if (data.reply) {
+          chatContainer.innerHTML += `
+            <div class="h-fit w-[85%] sm:w-[700px] bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600">
+              ${data.reply}
+            </div>`;
+        } else {
+          chatContainer.innerHTML += `
+            <div class="h-fit w-[85%] sm:w-[700px] bg-red-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-red-600">
+              Error: ${JSON.stringify(data)}
+            </div>`;
+        }
+
+        // clear input
+        input.value = "";
+
+        // auto-scroll down
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      });
+    </script>
   </body>
 </html>
