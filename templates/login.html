@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-motion@latest/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  </head>
+
+  <body
+    class="w-full h-screen [&>div]:absolute [&>div]:inset-0 flex justify-center items-center"
+  >
+    <!-- Glow Background -->
+    <div
+      class="bg-slate-100 bg-[radial-gradient(circle_at_top_center,rgba(56,193,182,0.5),transparent_70%)] bg-no-repeat blur-[30px] sm:blur-[80px]"
+    ></div>
+
+    <!-- Login form -->
+    <main
+      class="w-[90%] h-[70%] sm:w-[500px] sm:h-[600px] bg-white z-10 drop-shadow rounded-3xl flex flex-col p-6 outline-slate-400 outline-0.5 flex flex-col gap-4 items-center justify-around"
+    >
+      <div class="relative flex flex-col justify-center items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-20 absolute bottom-34 text-teal-700 fill-current stroke-current"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+          />
+        </svg>
+
+        <h1 class="font-[Inter] text-[100px] font-bold text-teal-700">Juno.</h1>
+        <h1 class="font-[Inter] text-2xl text-teal-700">
+          Your orbit begins here.
+        </h1>
+      </div>
+
+      <div class="w-full flex flex-col gap-4">
+        <!--Google auth-->
+        <button
+          class="w-full h-[60px] bg-white outline-1 outline-slate-100 rounded-xl hover:bg-slate-50 shadow-md flex gap-4 justify-center items-center"
+        >
+          <i class="fa-brands fa-google text-2xl text-teal-700"></i>
+          <h1 class="text-xl text-slate-700">Continue with Google</h1>
+        </button>
+        <!--Anonymous-->
+        <button
+          class="w-full h-[60px] bg-white outline-1 outline-slate-100 rounded-xl hover:bg-slate-50 shadow-md flex gap-4 justify-center items-center"
+        >
+          <i class="fa-solid fa-user text-2xl text-teal-700"></i>
+          <h1 class="text-xl text-slate-700">Continue as Guest</h1>
+        </button>
+      </div>
+    </main>
+  </body>
+</html>

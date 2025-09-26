@@ -1,44 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-            rel="stylesheet"
-        />
-        <title>Juno Trial</title>
-    </head>
-    <body class="h-screen w-full flex justify-center items-center">
-        <main
-            class="w-[90%] h-[90%] grid grid-rows-[1fr_100px] p-6 bg-slate-100 rounded-4xl shadow-inner"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Juno Trial</title>
+  </head>
+  <body class="h-screen w-full flex justify-center items-center">
+    <main
+      class="w-[95%] h-[95%] sm:w-[1200px] sm:h-[90%] grid grid-rows-[1fr_100px] sm:grid-rows-[1fr_80px] p-4 sm:p-6 bg-slate-100 rounded-4xl shadow-inner"
+    >
+      <!--chat-->
+      <div id="chatContainer" class="overflow-y-auto flex flex-col gap-4">
+        <!--human chat-->
+        <div
+          class="h-fit w-[85%] sm:w-[700px] bg-white rounded-2xl self-end drop-shadow font-[Inter] text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600"
         >
-            <!--chat-->
-            <div id="responseContainer" style="color: black;">dw</div>
-            <!--input-->
-            <form class="bg-white shadow-md rounded-3xl flex p-4">
-                <input
-                    type="text"
-                    class="h-full w-full rounded-2xl text-slate-700 focus:outline-white p-1 px-4 text-start text-2xl"
-                    placeholder="Chat with Juno"
-                />
-                <section class="w-[160px] flex h-full">
-                    <button class="bg-white h-full w-[80px] rounded-full">
-                        <i
-                            class="fa-solid fa-microphone text-3xl text-slate-700"
-                        ></i>
-                    </button>
-                    <button
-                        class="bg-gradient-to-r from-green-300 shadow-md to-cyan-400 h-[70px] w-[70px] rounded-full hover:rotate-180 transition-all duration-100 active:brightness-95 active:scale-110"
-                    >
-                        <i
-                            class="fa-solid fa-arrow-down text-3xl text-white"
-                        ></i>
-                    </button>
-                </section>
-            </form>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        </div>
 
-        </main>
-    </body>
+        <!--bot chat-->
+        <div
+          class="h-fit w-[85%] sm:w-[700px] bg-linear-to-r from-emerald-100 to-teal-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600"
+        >
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
+          atque delectus ducimus dolore minima, consectetur modi. Excepturi odit
+          quos est facere consequatur provident consequuntur ex amet, soluta,
+          molestias deleniti error.
+        </div>
+        <!--human chat-->
+        <div
+          class="h-fit w-[85%] sm:w-[700px] bg-white rounded-2xl self-end drop-shadow font-[Inter] text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600"
+        >
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
+          atque delectus ducimus dolore minima, consectetur modi.
+        </div>
+
+        <!--bot chat-->
+        <div
+          class="h-fit w-[85%] sm:w-[700px] bg-linear-to-r from-emerald-100 to-teal-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600"
+        >
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
+          atque delectus ducimus dolore minima, consectetur modi. Excepturi odit
+          quos est facere consequatur provident consequuntur ex amet, soluta,
+          molestias deleniti error.
+        </div>
+      </div>
+
+      <!--input-->
+      <form
+        class="bg-white shadow-md rounded-3xl sm:h-full h-fit flex flex-col sm:flex-row p-3"
+      >
+        <input
+          type="text"
+          class="h-full w-full rounded-2xl text-slate-700 focus:outline-white p-1 px-4 text-start text-xl sm:text-2xl"
+          placeholder="Chat with Juno"
+        />
+        <section class="w-full sm:w-[160px] flex h-full justify-end gap-2">
+          <button class="bg-white h-full w-[40px] rounded-full relative">
+            <i
+              class="fa-solid fa-microphone sm: text-3xl text-2xl text-slate-700 absolute sm:top-3 sm:right-4 top-1.5 right-2"
+            ></i>
+          </button>
+          <button
+            class="bg-gradient-to-r from-green-300 shadow-md to-cyan-400 h-[40px] w-[40px] sm:h-[55px] sm:w-[55px] rounded-full hover:rotate-180 transition-all duration-100 active:brightness-95 active:scale-110"
+          >
+            <i class="fa-solid fa-arrow-down text-2xl text-white"></i>
+          </button>
+        </section>
+      </form>
+    </main>
+  </body>
 </html>
