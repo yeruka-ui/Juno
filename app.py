@@ -10,11 +10,12 @@ def create_app():
 
     @app.route('/')
     def home():
-        return render_template("main.html") 
+        return render_template("login.html")
         
     return app
 
 '''TO RUN APPLICATION (IN TERMINAL): 
+.\.venv\Scripts\Activate.ps1 (ACTIVATE ENVIRONMENT)
 $env:FLASK_APP = "app:create_app"
 $env:FLASK_ENV = "development"
 flask run
