@@ -21,6 +21,7 @@ if __name__ == "__main__":
 
 
 '''TO RUN APPLICATION (IN TERMINAL): 
+.venv\Scripts\Activate.ps1
 $env:FLASK_APP = "app:create_app"
 $env:FLASK_ENV = "development"
 flask run
