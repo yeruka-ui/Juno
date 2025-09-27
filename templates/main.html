@@ -54,53 +54,6 @@
         </section>
       </form>
     </main>
-
-    <!-- chat logic -->
-    <script>
-      const form = document.getElementById("chatForm");
-      const input = document.getElementById("userInput");
-      const chatContainer = document.getElementById("chatContainer");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault(); // stop page reload
-
-        const message = input.value.trim();
-        if (!message) return;
-
-        // add user bubble
-        chatContainer.innerHTML += `
-          <div class="h-fit w-[85%] sm:w-[700px] bg-white rounded-2xl self-end drop-shadow font-[Inter] text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600">
-            ${message}
-          </div>`;
-
-        // send to Flask API
-        const res = await fetch("/api/ask", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message }),
-        });
-
-        const data = await res.json();
-
-        // add bot bubble
-        if (data.reply) {
-          chatContainer.innerHTML += `
-            <div class="h-fit w-[85%] sm:w-[700px] bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600">
-              ${data.reply}
-            </div>`;
-        } else {
-          chatContainer.innerHTML += `
-            <div class="h-fit w-[85%] sm:w-[700px] bg-red-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-red-600">
-              Error: ${JSON.stringify(data)}
-            </div>`;
-        }
-
-        // clear input
-        input.value = "";
-
-        // auto-scroll down
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-      });
-    </script>
+    <script src="{{ url_for('static', filename='script/chatLogic.js') }}" type="module"></script>
   </body>
 </html>
