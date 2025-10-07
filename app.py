@@ -8,7 +8,7 @@ from routes.api import api_bp
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = os.getenv("SECRET_KEY", "supersecretkey")  # Needed for sessions
+    app.secret_key = os.getenv("SECRET_KEY")  # Needed for sessions
 
     # Initialize Firebase Admin
     cred = credentials.Certificate("serviceAccountKey.json")
@@ -43,6 +43,11 @@ def create_app():
     return app
 
 '''TO RUN APPLICATION (IN TERMINAL): 
+//install dependencies
+pip install -r requirements.txt
+npm install
+
+//run the app
 .venv\Scripts\Activate.ps1
 $env:FLASK_APP = "app:create_app"
 $env:FLASK_ENV = "development"
