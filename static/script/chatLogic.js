@@ -38,16 +38,22 @@ async function sendMessage(message, parent) {
 
         const data = await res.json();
 
+
         if (data.reply) {
+            // no command
             parent.appendChild(botMsg(data.reply));
-            console.log(JSON.stringify(data));
+            console.log(JSON.stringify(data, null, 2));
+
+            // with command
         } else if (data.isCommand) {
             parent.appendChild(botMsg(data.content));
-            console.log(JSON.stringify(data));
+            console.log(JSON.stringify(data, null, 2));
+
         } else {
             const msg = `Error: ${JSON.stringify(data, null, 2)}`;
-            parent.appendChild(errorMsg(msg)); // ✅ pass string, not object
+            parent.appendChild(errorMsg(msg));
         }
+
     } catch (err) {
         parent.appendChild(errorMsg(`Network/Parse error: ${err.message}`));
     }
