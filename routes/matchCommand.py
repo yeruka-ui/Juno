@@ -1,9 +1,13 @@
+from .commands import *
+
 def match_command(input):
-    command = input['command']
+
+    command = input['command_id'] #gets command
+    confidence = input['confidence']
 
     match command:
         case 'joke':
-            return 'joke'
+            return get_joke(command, confidence)
         case 'weather':
             return 'weather'
         case 'news':

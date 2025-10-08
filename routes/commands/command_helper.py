@@ -1,10 +1,11 @@
 from flask import jsonify, request
 import json
 
+#returns new obj
 def newJson(command, confidence, content):
     return jsonify({
         "isCommand": True,
-        "command": f"{command}",
-        "confidence": f"{confidence}",
-        content: f"{content}"
+        "command": command,
+        "confidence": confidence,
+        "content": content
     }), 200
