@@ -5,14 +5,16 @@ from .commands import command_helper
 def match_command(input):
 
     command = input['command_id'] #gets command
-    confidence = input['confidence']
-    user_args = input['arguments']
+    confidence = input['confidence'] #confidence level
+    user_args = (input or {}).get('arguments', "") or ""  #generated arguments from user input
 
     match command:
         case 'joke':
             return get_joke(command, confidence)
         case 'weather':
             return get_weather(command, confidence, user_args)
+        case 'quote':
+            return get_quote(command, confidence)
         case 'news':
             return 'news'
         case 'play':
@@ -27,5 +29,7 @@ def match_command(input):
             return 'dictionary'
         case 'thesaurus':
             return 'thesaurus'
+        case 'help':
+            return 'help'
         case _:
             return 'Oh moons, I beg your pardon?'

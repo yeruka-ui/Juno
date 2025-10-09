@@ -56,7 +56,9 @@ Before responding, determine whether the user’s message expresses a **command 
 If a command is detected, respond **only with a JSON object** describing that command — no additional text or HTML.
 
 **Recognized commands:**  
-`["joke", "weather", "news", "play", "search", "email", "wiki", "dictionary", "thesaurus"]`
+`["joke", "weather", "quote", "news", "play", "search", "email", "wiki", "dictionary", "thesaurus", "help"]`
+
+Note that "help" command is for listing all of Juno's functionalities
 
 Extract any relevant argument and place it under the `"arguments"` key as a **single value** (not an object).
 
