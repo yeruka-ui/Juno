@@ -5,21 +5,28 @@ function formListener() {
     const form = document.getElementById("chatForm");
     const input = document.getElementById("userInput");
     const chatContainer = document.getElementById("chatContainer");
+    let isRunning = false;
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const message = input.value.trim();
+        if (!message || isRunning) return;
+
         input.value = "";
-        if (!message) return;
-
-        // Add user message
         chatContainer.appendChild(humanMsg(message));
-
-        await sendMessage(message, chatContainer);
         chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        try {
+            isRunning = true;
+            await sendMessage(message, chatContainer);
+        } finally {
+            isRunning = false;
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
     });
 }
+
 
 async function sendMessage(message, parent) {
     try {
