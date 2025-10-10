@@ -14,7 +14,56 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>Juno Trial</title>
+    <title>Juno ChatBot</title>
+      <style> main {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(10px);
+    animation: openUp 0.8s ease-out forwards;
+  }
+
+  /* --- Slight stagger for internal sections --- */
+  #chatContainer,
+  #chatForm {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(8px);
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  #chatContainer {
+    animation-delay: 0.3s;
+  }
+  #chatForm {
+    animation-delay: 0.6s;
+  }
+
+  /* --- Keyframes --- */
+  @keyframes openUp {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+      filter: blur(20px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }</style>
   </head>
   <body class="h-screen w-full flex justify-center items-center">
     <main
