@@ -16,7 +16,7 @@ def match_command(input):
         case 'quote':
             return get_quote(command, confidence)
         case 'news':
-            return 'news'
+            return get_news(command, confidence, user_args)
         case 'play':
             return 'play'
         case 'search':
