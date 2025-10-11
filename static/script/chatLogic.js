@@ -57,8 +57,18 @@ async function sendMessage(message, parent) {
 
             // with command
         } else if (data.isCommand) {
-            parent.appendChild(botMsg(data.content));
-            console.log(JSON.stringify(data, null, 2));
+
+            if (String(data.command) == 'news') {
+                const raw = JSON.stringify(data.content)
+                parent.appendChild(botMsg(raw));
+                console.log(JSON.stringify(data, null, 2));
+            }
+            //default msg formatting
+            else {
+                parent.appendChild(botMsg(data.content));
+                console.log(JSON.stringify(data, null, 2));
+            }
+
 
         } else {
             const msg = `Error: ${JSON.stringify(data, null, 2)}`;
