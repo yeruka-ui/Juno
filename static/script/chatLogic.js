@@ -1,5 +1,6 @@
 import humanMsg from "./humanMsg.js";
-import {botMsg, errorMsg} from "./botMsg.js";
+import {botMsg, errorMsg, loadingMsg} from "./botMsg.js";
+
 
 function formListener() {
     const form = document.getElementById("chatForm");
@@ -19,9 +20,12 @@ function formListener() {
 
         try {
             isRunning = true;
+            chatContainer.appendChild(loadingMsg());
             await sendMessage(message, chatContainer);
         } finally {
             isRunning = false;
+            const loader = document.querySelector('.loader-body');
+            loader.remove();
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
     });

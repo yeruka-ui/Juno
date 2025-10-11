@@ -15,3 +15,12 @@ export function errorMsg(error) {
     chatAnimation(message);
     return message;
 }
+
+export function loadingMsg() {
+    const message = document.createElement('div');
+    message.className = "chat loader-body h-fit w-fit max-w-[95%] bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl self-start drop-shadow text-[20px] text-start sm:text-2xl p-2 sm:p-6 text-wrap text-slate-600";
+    const loader = document.createElement('div');
+    loader.className = 'loader'
+    message.appendChild(loader);
+    return message
+}
