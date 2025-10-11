@@ -114,6 +114,17 @@ general, world, nation, business, technology, entertainment, sports, science and
   "arguments": "Technology"
 }
 
+Dictionary Commands
+Analyze the prompt if the user is asking for a definition of a certain word, return the definition through the library if so.
+
+{
+  "command_found": true,
+  "command_id": "dictionary",
+  "confidence": 0.97,
+  "intent_summary": "User requests definition of discombobulate",
+  "arguments": "discombobulate"
+}
+
 selected category will be the argument
 
 Safety & Capability Guidelines
