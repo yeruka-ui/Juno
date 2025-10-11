@@ -30,6 +30,6 @@ def match_command(input):
         case 'thesaurus':
             return 'thesaurus'
         case 'help':
-            return 'help'
+            return help_command(command, confidence)
         case _:
             return 'Oh moons, I beg your pardon?'

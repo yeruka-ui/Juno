@@ -2,7 +2,7 @@ from .command_helper import newJson
 import requests
 import os
 
-def get_weather(command, confidence, place='tokyo'):
+def get_weather(command, confidence, place='Manila'):
     api_key = os.getenv("WEATHER_API_KEY")
     url = f"https://api.openweathermap.org/data/2.5/weather?q={place}&appid={api_key}&units=metric"
 
