@@ -5,13 +5,13 @@ export function thesaurus_template(content) {
     const antonyms = content['antonyms']?.join(', ') || 'None';
 
     //template
-    const template = `<h1 class="text-2xl font-bold mb-3">Thesaurus: "${orig_word}"</h1>
+    const template = `<h1 class="text-xl sm:text-2xl font-bold mb-3">Thesaurus: "${orig_word}"</h1>
           <hr class="border-slate-600 border-1" />
-          <h1 class="text-2xl font-bold">Synonyms:</h1>
-          <p>${synonyms}</p>
+          <h1 class="text-lg sm:text-2xl font-bold">Synonyms:</h1>
+          <p class="text-md sm:text-md">${synonyms}</p>
           <br />
-          <h1 class="text-2xl font-bold">Antonyms:</h1>
-          <p>${antonyms}</p>
+          <h1 class="text-lg sm:text-2xl font-bold">Antonyms:</h1>
+          <p class="text-md sm:text-md">${antonyms}</p>
         </div>`
     return template
 }
