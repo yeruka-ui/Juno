@@ -4,11 +4,10 @@ import os
 
 def get_news(command, confidence, topic = 'General'):
    API_KEY = os.getenv('NEWS_API_KEY')
-   url = f"https://gnews.io/api/v4/top-headlines?category={topic}&lang=en&apikey={API_KEY}"
+   url = f"https://gnews.io/api/v4/top-headlines?category={topic}&lang=en&max=5&apikey={API_KEY}"
 
    response = requests.get(url)
    news_json = response.json()
-
    news_articles = news_json['articles']
 
    articles = []
