@@ -6,15 +6,16 @@ def get_definition(command, confidence, word):
     definition = dictionary.meaning('en', word)
 
     if isinstance(definition, dict):
-        parts = list(definition.keys())  # e.g. ['Noun', 'Verb']
+        parts = list(definition.keys())
 
         short_def = " ".join(sum(definition.values(), []))[:200] + "..."
 
-        long_def = ""
-        for pos, meanings in definition.items():
-            long_def += f"{pos}:\n" + "\n".join(f" - {m}" for m in meanings) + "\n"
+        long_def = "\n".join(
+            f"{pos}: " + "; ".join(meanings)
+            for pos, meanings in definition.items()
+        )
 
-        content = [word, parts, short_def, long_def.strip()]
+        content = [word, parts, short_def, long_def]
     else:
         content = [word, [], str(definition), ""]
 
