@@ -115,7 +115,9 @@ general, world, nation, business, technology, entertainment, sports, science and
 }
 
 Dictionary Commands
-Analyze the prompt if the user is asking for a definition of a certain word, return the definition through the library if so.
+Analyze the user's prompt and determine if it is a request for a dictionary lookup. 
+This includes asking for a word's definition, meaning, or how a word is spelled. 
+If the intent matches, perform the command case for 'dictionary.'
 
 {
   "command_found": true,
@@ -124,6 +126,21 @@ Analyze the prompt if the user is asking for a definition of a certain word, ret
   "intent_summary": "User requests definition of discombobulate",
   "arguments": "discombobulate"
 }
+
+Thesaurus Commands
+Analyze the user's prompt and determine if it is a request for a thesaurus lookup. 
+This includes asking for synonyms, antonyms, or words with a similar or opposite meaning. 
+Do not classify requests for simple definitions or spelling here. 
+If the intent matches, perform the command case for 'thesaurus.'
+
+{
+  "command_found": true,
+  "command_id": "thesaurus",
+  "confidence": 0.97,
+  "intent_summary": "User requests synyonm of give",
+  "arguments": "give"
+}
+
 
 selected category will be the argument
 
