@@ -4,4 +4,5 @@ from .quotes_command import  *
 from .news_command import  *
 from .dictionary_command import * 
 from .help_command import  *
-__all__ = ["get_joke", "get_weather", "get_quote", "help_command", "get_news", "get_definition", "get_synonym_antonym"]
+from .play_command import *
+__all__ = ["get_joke", "get_weather", "get_quote", "help_command", "get_news", "get_definition", "get_synonym_antonym", "get_play"]

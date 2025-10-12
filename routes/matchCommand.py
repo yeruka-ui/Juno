@@ -18,7 +18,7 @@ def match_command(input):
         case 'news':
             return get_news(command, confidence, user_args)
         case 'play':
-            return 'play'
+            return get_play(command, confidence, user_args)
         case 'search':
             return 'search'
         case 'email':
