@@ -1,6 +1,7 @@
 import humanMsg from "./humanMsg.js";
 import {botMsg, errorMsg, loadingMsg} from "./botMsg.js";
-
+import {dictionary_template} from "./response_template/dictionary_template.js";
+import {thesaurus_template} from "./response_template/thesaurus_template.js";
 
 function formListener() {
     const form = document.getElementById("chatForm");
@@ -49,7 +50,6 @@ async function sendMessage(message, parent) {
 
         const data = await res.json();
 
-
         if (data.reply) {
             // no command
             parent.appendChild(botMsg(data.reply));
@@ -64,21 +64,25 @@ async function sendMessage(message, parent) {
                 console.log(JSON.stringify(data, null, 2));
             }
             else if (String(data.command) == 'dictionary') {
-                const raw = JSON.stringify(data.content)
-                parent.appendChild(botMsg(raw));
+                const content = data.content
+
+                parent.appendChild(botMsg(dictionary_template(content)));
+
                 console.log(JSON.stringify(data, null, 2));
             }
             else if (String(data.command) == 'thesaurus') {
-                const raw = JSON.stringify(data.content)
-                parent.appendChild(botMsg(raw));
+                const content = data.content
+
+                parent.appendChild(botMsg(thesaurus_template(content)));
+
                 console.log(JSON.stringify(data, null, 2));
             }
+
             //default msg formatting
             else {
                 parent.appendChild(botMsg(data.content));
                 console.log(JSON.stringify(data, null, 2));
             }
-
 
         } else {
             const msg = `Error: ${JSON.stringify(data, null, 2)}`;

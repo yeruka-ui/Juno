@@ -4,7 +4,21 @@ dictionary = MultiDictionary()
 
 def get_definition(command, confidence, word):
     definition = dictionary.meaning('en', word)
-    return newJson(command, confidence, definition)
+
+    if isinstance(definition, dict):
+        parts = list(definition.keys())  # e.g. ['Noun', 'Verb']
+
+        short_def = " ".join(sum(definition.values(), []))[:200] + "..."
+
+        long_def = ""
+        for pos, meanings in definition.items():
+            long_def += f"{pos}:\n" + "\n".join(f" - {m}" for m in meanings) + "\n"
+
+        content = [word, parts, short_def, long_def.strip()]
+    else:
+        content = [word, [], str(definition), ""]
+
+    return newJson(command, confidence, content)
 
 def get_synonym_antonym(command, confidence, word):
     synonym = dictionary.synonym('en', word)
