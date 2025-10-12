@@ -2,6 +2,7 @@ import humanMsg from "./humanMsg.js";
 import {botMsg, errorMsg, loadingMsg} from "./botMsg.js";
 import {dictionary_template} from "./response_template/dictionary_template.js";
 import {thesaurus_template} from "./response_template/thesaurus_template.js";
+import {news_template} from "./response_template/news_template.js";
 
 function formListener() {
     const form = document.getElementById("chatForm");
@@ -58,19 +59,21 @@ async function sendMessage(message, parent) {
             // with command
         } else if (data.isCommand) {
 
-            if (String(data.command) == 'news') {
-                const raw = JSON.stringify(data.content)
-                parent.appendChild(botMsg(raw));
+            // TODO :: REFACTOR TO SWITCH CASES
+
+            if (String(data.command) === 'news') {
+                const content = data.content
+                parent.appendChild(botMsg(news_template(content)));
                 console.log(JSON.stringify(data, null, 2));
             }
-            else if (String(data.command) == 'dictionary') {
+            else if (String(data.command) === 'dictionary') {
                 const content = data.content
 
                 parent.appendChild(botMsg(dictionary_template(content)));
 
                 console.log(JSON.stringify(data, null, 2));
             }
-            else if (String(data.command) == 'thesaurus') {
+            else if (String(data.command) === 'thesaurus') {
                 const content = data.content
 
                 parent.appendChild(botMsg(thesaurus_template(content)));
