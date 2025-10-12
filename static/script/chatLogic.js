@@ -63,6 +63,16 @@ async function sendMessage(message, parent) {
                 parent.appendChild(botMsg(raw));
                 console.log(JSON.stringify(data, null, 2));
             }
+            else if (String(data.command) == 'dictionary') {
+                const raw = JSON.stringify(data.content)
+                parent.appendChild(botMsg(raw));
+                console.log(JSON.stringify(data, null, 2));
+            }
+            else if (String(data.command) == 'thesaurus') {
+                const raw = JSON.stringify(data.content)
+                parent.appendChild(botMsg(raw));
+                console.log(JSON.stringify(data, null, 2));
+            }
             //default msg formatting
             else {
                 parent.appendChild(botMsg(data.content));

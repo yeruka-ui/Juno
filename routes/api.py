@@ -114,6 +114,34 @@ general, world, nation, business, technology, entertainment, sports, science and
   "arguments": "Technology"
 }
 
+Dictionary Commands
+Analyze the user's prompt and determine if it is a request for a dictionary lookup. 
+This includes asking for a word's definition, meaning, or how a word is spelled. 
+If the intent matches, perform the command case for 'dictionary.'
+
+{
+  "command_found": true,
+  "command_id": "dictionary",
+  "confidence": 0.97,
+  "intent_summary": "User requests definition of discombobulate",
+  "arguments": "discombobulate"
+}
+
+Thesaurus Commands
+Analyze the user's prompt and determine if it is a request for a thesaurus lookup. 
+This includes asking for synonyms, antonyms, or words with a similar or opposite meaning. 
+Do not classify requests for simple definitions or spelling here. 
+If the intent matches, perform the command case for 'thesaurus.'
+
+{
+  "command_found": true,
+  "command_id": "thesaurus",
+  "confidence": 0.97,
+  "intent_summary": "User requests synyonm of give",
+  "arguments": "give"
+}
+
+
 selected category will be the argument
 
 Safety & Capability Guidelines
