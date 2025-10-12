@@ -16,7 +16,7 @@ def match_command(input):
         case 'quote':
             return get_quote(command, confidence)
         case 'news':
-            return 'news'
+            return get_news(command, confidence, user_args)
         case 'play':
             return 'play'
         case 'search':
@@ -26,9 +26,9 @@ def match_command(input):
         case 'wiki':
             return 'wiki'
         case 'dictionary':
-            return 'dictionary'
+            return get_definition(command, confidence, user_args)
         case 'thesaurus':
-            return 'thesaurus'
+            return get_synonym_antonym(command, confidence, user_args)
         case 'help':
             return help_command(command, confidence)
         case _:
