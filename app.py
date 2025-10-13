@@ -8,7 +8,7 @@ from routes.api import api_bp
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = os.getenv("SECRET_KEY", "supersecretkey")  # Needed for sessions
+    app.secret_key = os.getenv("SECRET_KEY")  # Needed for sessions
 
     # Initialize Firebase Admin
     cred = credentials.Certificate("serviceAccountKey.json")
