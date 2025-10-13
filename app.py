@@ -46,6 +46,9 @@ def create_app():
 //install dependencies
 pip install -r requirements.txt
 npm install
+pip install google-search-results
+pip install pywhatkit
+
 
 //run the app
 .venv\Scripts\Activate.ps1

@@ -20,9 +20,9 @@ def match_command(input):
         case 'play':
             return get_play(command, confidence, user_args)
         case 'search':
-            return 'search'
+            return get_search(command, confidence, user_args)
         case 'email':
-            return 'email'
+            return get_email(command, confidence, user_args)
         case 'wiki':
             return 'wiki'
         case 'dictionary':
