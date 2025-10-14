@@ -22,7 +22,7 @@ def match_command(input):
         case 'search':
             return get_search(command, confidence, user_args)
         case 'email':
-            return 'email'
+            return send_email(command, confidence, user_args)
         case 'dictionary':
             return get_definition(command, confidence, user_args)
         case 'thesaurus':

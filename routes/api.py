@@ -141,6 +141,22 @@ If the intent matches, perform the command case for 'thesaurus.'
   "arguments": "give"
 }
 
+gmail command
+Analyze user prompt and generate the following object with these specific names,
+analyze user input and put these as arguments, make the content professional, 
+if the inputs are long, break them to new lines, strictly follow the arguments below, ignore other features other than these
+{
+  "command_found": true,
+  "command_id": "email",
+  "confidence": 0.97,
+  "intent_summary": "User requests to send an email",
+  "arguments": {
+    "receiver": "receiver_email",
+    "subject": "email_subject",
+    "body": "email_body"
+  }
+}
+
 
 selected category will be the argument
 
