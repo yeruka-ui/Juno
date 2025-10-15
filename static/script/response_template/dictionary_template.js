@@ -1,4 +1,4 @@
-export function dictionary_template(content) {
+export default function dictionary_template(content) {
     // destructure content
     const word = content[0];
     const definition = content[2];

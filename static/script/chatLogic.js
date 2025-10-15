@@ -1,9 +1,10 @@
 import humanMsg from "./humanMsg.js";
 import {botMsg, errorMsg, loadingMsg} from "./botMsg.js";
-import {dictionary_template} from "./response_template/dictionary_template.js";
-import {thesaurus_template} from "./response_template/thesaurus_template.js";
-import {news_template} from "./response_template/news_template.js";
-import {play_template} from "./response_template/play_template.js";
+import dictionary_template from "./response_template/dictionary_template.js";
+import thesaurus_template from "./response_template/thesaurus_template.js";
+import news_template from "./response_template/news_template.js";
+import play_template from "./response_template/play_template.js";
+import wiki_template from "./response_template/wiki_template.js";
 
 function formListener() {
     const form = document.getElementById("chatForm");
@@ -74,6 +75,7 @@ async function sendMessage(message, parent) {
                         parent.appendChild(botMsg(play_template(content)));
                         break;
                     case 'wiki':
+                        parent.appendChild(botMsg(wiki_template(content)));
                         break;
                     default:
                         //non-formattable commands
