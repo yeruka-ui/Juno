@@ -1,4 +1,4 @@
-export function thesaurus_template(content) {
+export default function thesaurus_template(content) {
     //data
     const orig_word = content['orig_word']
     const synonyms = content['synonyms']?.join(', ') || 'None';

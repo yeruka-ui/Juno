@@ -1,4 +1,4 @@
-export function play_template(content) {
+export default function play_template(content) {
   const { embed_url, title } = content;
 
   return `

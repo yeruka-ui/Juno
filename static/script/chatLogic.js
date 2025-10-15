@@ -1,9 +1,10 @@
 import humanMsg from "./humanMsg.js";
 import {botMsg, errorMsg, loadingMsg} from "./botMsg.js";
-import {dictionary_template} from "./response_template/dictionary_template.js";
-import {thesaurus_template} from "./response_template/thesaurus_template.js";
-import {news_template} from "./response_template/news_template.js";
-import {play_template} from "./response_template/play_template.js";
+import dictionary_template from "./response_template/dictionary_template.js";
+import thesaurus_template from "./response_template/thesaurus_template.js";
+import news_template from "./response_template/news_template.js";
+import play_template from "./response_template/play_template.js";
+import wiki_template from "./response_template/wiki_template.js";
 
 function formListener() {
     const form = document.getElementById("chatForm");
@@ -38,9 +39,7 @@ function formListener() {
 async function sendMessage(message, parent) {
     try {
         const res = await fetch("/api/ask", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({message}),
+            method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({message}),
         });
 
         if (!res.ok) {
@@ -59,43 +58,36 @@ async function sendMessage(message, parent) {
 
             // with command
         } else if (data.isCommand) {
-
-            // TODO :: REFACTOR TO SWITCH CASES
-
-            if (String(data.command) === 'news') {
-                const content = data.content
-                parent.appendChild(botMsg(news_template(content)));
+            let command = data.command
+            let content = data.content;
+            try {
+                switch (command) {
+                    case 'news':
+                        parent.appendChild(botMsg(news_template(content)));
+                        break;
+                    case 'dictionary':
+                        parent.appendChild(botMsg(dictionary_template(content)));
+                        break;
+                    case 'thesaurus':
+                        parent.appendChild(botMsg(thesaurus_template(content)));
+                        break;
+                    case 'play':
+                        parent.appendChild(botMsg(play_template(content)));
+                        break;
+                    case 'wiki':
+                        parent.appendChild(botMsg(wiki_template(content)));
+                        break;
+                    default:
+                        //non-formattable commands
+                        parent.appendChild(botMsg(data.content));
+                        break;
+                }
+            } catch (ex) {
+                const msg = `Error: ${JSON.stringify(data, null, 2)}`;
+                parent.appendChild(errorMsg(msg));
+            } finally {
                 console.log(JSON.stringify(data, null, 2));
             }
-            else if (String(data.command) === 'dictionary') {
-                const content = data.content
-
-                parent.appendChild(botMsg(dictionary_template(content)));
-
-                console.log(JSON.stringify(data, null, 2));
-            }
-            else if (String(data.command) === 'thesaurus') {
-                const content = data.content
-
-                parent.appendChild(botMsg(thesaurus_template(content)));
-
-                console.log(JSON.stringify(data, null, 2));
-            }
-             else if (String(data.command) === 'play') {
-                 const content = data.content
-                parent.appendChild(botMsg(play_template(content)));
-                console.log(JSON.stringify(content, null, 2));
-            }
-
-            //default msg formatting
-            else {
-                parent.appendChild(botMsg(data.content));
-                console.log(JSON.stringify(data, null, 2));
-            }
-
-        } else {
-            const msg = `Error: ${JSON.stringify(data, null, 2)}`;
-            parent.appendChild(errorMsg(msg));
         }
 
     } catch (err) {

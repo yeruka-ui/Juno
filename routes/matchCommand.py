@@ -29,5 +29,7 @@ def match_command(input):
             return get_synonym_antonym(command, confidence, user_args)
         case 'help':
             return help_command(command, confidence)
+        case 'wiki':
+            return get_wiki(command, confidence, user_args)
         case _:
             return 'Oh moons, I beg your pardon?'

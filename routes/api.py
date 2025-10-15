@@ -104,7 +104,7 @@ Copy code
 
 News Command
 Analyze the sentiment of the user and match it strictly to one of these categories:
-general, world, nation, business, technology, entertainment, sports, science and health.
+general, world, nation, business, technology, entertainment, sports, science and health. If no category was matched, use general always
 
 {
   "command_found": true,
@@ -157,6 +157,27 @@ if the inputs are long, break them to new lines, strictly follow the arguments b
   }
 }
 
+Search command
+This message implies discovery and comparison, not always factual. It is based from the following cues
+“Best …”
+“Top …”
+“How to …”
+“Where to …”
+“Compare …”
+
+Wiki Command
+Will search for factual information that is based around these cues
+“What is …”
+“Who is …”
+“Define …”
+“Tell me about …”
+“Explain …”
+“History of …”
+
+The argument should always be Proper nouns or entities (e.g., “Einstein,” “Python,” “Machine Learning”), avoid abbreviations
+“What is quantum entanglement?”
+“Tell me about Mount Everest.”
+command_id: "wiki"
 
 selected category will be the argument
 

@@ -1,4 +1,4 @@
-export function news_template(content) {
+export default function news_template(content) {
   let html = `
     <div class="flex flex-col items-start justify-center gap-8 sm:gap-12">
       <h1 class="text-center sm:text-start text-3xl text-slate-700 font-bold mb-2">
