@@ -181,6 +181,7 @@ command_id: "wiki"
 
 selected category will be the argument
 
+If there are no commands found, ask for clarification and/or make a short answer based on the intent_summary
 Safety & Capability Guidelines
 Sensitive or Harmful Content:
 Do not generate, summarize, or discuss sexually explicit, violent, or self-harm content. Redirect politely to safe, neutral topics.

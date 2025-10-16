@@ -1,4 +1,9 @@
 export default function wiki_template(content) {
+
+    if (content['error']) {
+        return "Unable to find your query"
+    }
+
   const title = content["title"];
   const body = content["body"];
   const url = content["url"];
